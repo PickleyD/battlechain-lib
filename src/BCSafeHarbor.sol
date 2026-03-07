@@ -2,8 +2,8 @@
 // aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
-import { BCBase } from "src/BCBase.sol";
-import { BCConfig } from "src/BCConfig.sol";
+import { BCBase } from "./BCBase.sol";
+import { BCConfig } from "./BCConfig.sol";
 import {
     AgreementDetails,
     Contact,
@@ -12,11 +12,11 @@ import {
     ChildContractScope,
     BountyTerms,
     IdentityRequirements
-} from "src/types/AgreementTypes.sol";
-import { IAgreementFactory } from "src/interfaces/IAgreementFactory.sol";
-import { IAgreement } from "src/interfaces/IAgreement.sol";
-import { IAttackRegistry } from "src/interfaces/IAttackRegistry.sol";
-import { IBCSafeHarborRegistry } from "src/interfaces/IBCSafeHarborRegistry.sol";
+} from "./types/AgreementTypes.sol";
+import { IAgreementFactory } from "./interfaces/IAgreementFactory.sol";
+import { IAgreement } from "./interfaces/IAgreement.sol";
+import { IAttackRegistry } from "./interfaces/IAttackRegistry.sol";
+import { IBCSafeHarborRegistry } from "./interfaces/IBCSafeHarborRegistry.sol";
 
 /// @notice Agreement builder and registry helpers for BattleChain Safe Harbor.
 abstract contract BCSafeHarbor is BCBase {

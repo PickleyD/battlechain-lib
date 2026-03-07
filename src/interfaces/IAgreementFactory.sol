@@ -2,7 +2,7 @@
 // aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
-import { AgreementDetails } from "src/types/AgreementTypes.sol";
+import { AgreementDetails } from "../types/AgreementTypes.sol";
 
 interface IAgreementFactory {
     function create(

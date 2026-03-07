@@ -2,9 +2,9 @@
 // aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
-import { BCDeploy } from "src/BCDeploy.sol";
-import { BCSafeHarbor } from "src/BCSafeHarbor.sol";
-import { Contact } from "src/types/AgreementTypes.sol";
+import { BCDeploy } from "./BCDeploy.sol";
+import { BCSafeHarbor } from "./BCSafeHarbor.sol";
+import { Contact } from "./types/AgreementTypes.sol";
 
 /// @notice Single import combining BCDeploy and BCSafeHarbor with required protocol hooks.
 abstract contract BCScript is BCDeploy, BCSafeHarbor {

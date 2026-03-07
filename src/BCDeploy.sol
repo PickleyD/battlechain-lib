@@ -2,8 +2,8 @@
 // aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
-import { BCBase } from "src/BCBase.sol";
-import { IBCDeployer } from "src/interfaces/IBCDeployer.sol";
+import { BCBase } from "./BCBase.sol";
+import { IBCDeployer } from "./interfaces/IBCDeployer.sol";
 
 /// @notice Deploy helpers via BattleChainDeployer.
 /// Tracks all deployed addresses for use with BCSafeHarbor.

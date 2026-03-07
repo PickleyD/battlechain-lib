@@ -2,7 +2,7 @@
 // aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
-import { AgreementDetails, Contact, BcChain, BcAccount, BountyTerms } from "src/types/AgreementTypes.sol";
+import { AgreementDetails, Contact, BcChain, BcAccount, BountyTerms } from "../types/AgreementTypes.sol";
 
 interface IAgreement {
     function extendCommitmentWindow(uint256 newCantChangeUntil) external;
