@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
-import { BCScript } from "bc-lib/BCScript.sol";
-import { BCConfig } from "bc-lib/BCConfig.sol";
-import { AgreementDetails, Contact, BcChain } from "bc-lib/types/AgreementTypes.sol";
+import { BCScript } from "src/BCScript.sol";
+import { BCConfig } from "src/BCConfig.sol";
+import { AgreementDetails, Contact, BcChain } from "src/types/AgreementTypes.sol";
 
 /// @notice BattleChain deployment: deploy via BattleChainDeployer, create + adopt agreement, enter attack mode.
 /// Run:  forge script script/Example.s.sol:BattleChainExample --fork-url <testnet-rpc>

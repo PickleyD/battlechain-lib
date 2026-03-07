@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import { Test } from "forge-std/Test.sol";
-import { BCConfig } from "bc-lib/BCConfig.sol";
+import { BCConfig } from "src/BCConfig.sol";
 
 /// @dev External wrapper so vm.expectRevert works (library calls are inlined).
 contract BCConfigCaller {

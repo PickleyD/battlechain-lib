@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
 import { Script } from "forge-std/Script.sol";
@@ -8,6 +9,8 @@ import { BCConfig } from "src/BCConfig.sol";
 /// On known chains (627, etc.) addresses resolve from BCConfig.
 /// On Anvil (31337) or unknown chains, use _setBcAddresses() to set overrides.
 abstract contract BCBase is Script {
+    error BCBase__ZeroAddress();
+
     address private _registryOverride;
     address private _factoryOverride;
     address private _attackRegistryOverride;
@@ -15,6 +18,10 @@ abstract contract BCBase is Script {
 
     /// @notice Set address overrides for local testing or unsupported chains.
     function _setBcAddresses(address registry_, address factory_, address attackRegistry_, address deployer_) internal {
+        if (registry_ == address(0) || factory_ == address(0) || attackRegistry_ == address(0) || deployer_ == address(0))
+        {
+            revert BCBase__ZeroAddress();
+        }
         _registryOverride = registry_;
         _factoryOverride = factory_;
         _attackRegistryOverride = attackRegistry_;

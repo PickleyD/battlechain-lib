@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
 /// @notice Address registry for BattleChain contracts, resolved by chain ID.

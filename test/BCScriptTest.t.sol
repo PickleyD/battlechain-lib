@@ -2,8 +2,8 @@
 pragma solidity ^0.8.24;
 
 import { Test } from "forge-std/Test.sol";
-import { BCScript } from "bc-lib/BCScript.sol";
-import { AgreementDetails, Contact } from "bc-lib/types/AgreementTypes.sol";
+import { BCScript } from "src/BCScript.sol";
+import { AgreementDetails, Contact } from "src/types/AgreementTypes.sol";
 import {
     MockAgreementFactory,
     MockAgreement,

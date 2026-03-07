@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
 import { BCBase } from "src/BCBase.sol";
@@ -20,6 +21,7 @@ import { IBCSafeHarborRegistry } from "src/interfaces/IBCSafeHarborRegistry.sol"
 /// @notice Agreement builder and registry helpers for BattleChain Safe Harbor.
 abstract contract BCSafeHarbor is BCBase {
     uint256 private constant DEFAULT_BOUNTY_PERCENTAGE = 10;
+    // aderyn-ignore-next-line(large-numeric-literal)
     uint256 private constant DEFAULT_BOUNTY_CAP_USD = 1_000_000;
     uint256 private constant DEFAULT_COMMITMENT_DAYS = 14;
 
@@ -30,6 +32,7 @@ abstract contract BCSafeHarbor is BCBase {
     // -------------------------------------------------------------------------
 
     /// @notice Returns default bounty terms: 10%, $1M cap, retainable, anonymous, no aggregate cap.
+    // aderyn-ignore-next-line(internal-function-used-once)
     function defaultBountyTerms() internal pure returns (BountyTerms memory) {
         return BountyTerms({
             bountyPercentage: DEFAULT_BOUNTY_PERCENTAGE,
@@ -42,6 +45,7 @@ abstract contract BCSafeHarbor is BCBase {
     }
 
     /// @notice Converts addresses to BcAccount structs with ChildContractScope.All.
+    // aderyn-ignore-next-line(internal-function-used-once)
     function buildAccounts(address[] memory addresses) internal pure returns (BcAccount[] memory accounts) {
         accounts = new BcAccount[](addresses.length);
         for (uint256 i; i < addresses.length; ++i) {
@@ -51,6 +55,7 @@ abstract contract BCSafeHarbor is BCBase {
     }
 
     /// @notice Builds a BcChain entry for any EVM chain.
+    // aderyn-ignore-next-line(internal-function-used-once)
     function buildChainScope(
         address[] memory contracts,
         address recoveryAddr,
@@ -68,6 +73,7 @@ abstract contract BCSafeHarbor is BCBase {
     }
 
     /// @notice Builds a BcChain entry for the current BattleChain network.
+    // aderyn-ignore-next-line(internal-function-used-once)
     function buildBattleChainScope(
         address[] memory contracts,
         address recoveryAddr
@@ -128,16 +134,19 @@ abstract contract BCSafeHarbor is BCBase {
     // -------------------------------------------------------------------------
 
     /// @notice Creates an agreement via the AgreementFactory.
+    // aderyn-ignore-next-line(internal-function-used-once)
     function createAgreement(AgreementDetails memory details, address owner, bytes32 salt) internal returns (address) {
         return IAgreementFactory(_bcFactory()).create(details, owner, salt);
     }
 
     /// @notice Adopts an agreement in the BattleChain Safe Harbor Registry.
+    // aderyn-ignore-next-line(internal-function-used-once)
     function adoptAgreement(address agreementAddress) internal {
         IBCSafeHarborRegistry(_bcRegistry()).adoptSafeHarbor(agreementAddress);
     }
 
     /// @notice Sets the commitment window on an agreement.
+    // aderyn-ignore-next-line(internal-function-used-once)
     function setCommitmentWindow(address agreementAddress, uint256 durationDays) internal {
         uint256 newCantChangeUntil = block.timestamp + (durationDays * 1 days);
         IAgreement(agreementAddress).extendCommitmentWindow(newCantChangeUntil);

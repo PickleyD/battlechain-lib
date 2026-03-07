@@ -11,7 +11,7 @@ forge install cyfrin/battlechain-lib
 Add the remapping to your `foundry.toml`:
 
 ```toml
-remappings = ["bc-lib/=lib/battlechain-lib/src/"]
+remappings = ["battlechain-lib/=lib/battlechain-lib/src/"]
 ```
 
 ## Quick Start
@@ -19,8 +19,8 @@ remappings = ["bc-lib/=lib/battlechain-lib/src/"]
 Inherit `BCScript` and implement the required hooks:
 
 ```solidity
-import { BCScript } from "bc-lib/BCScript.sol";
-import { Contact } from "bc-lib/types/AgreementTypes.sol";
+import { BCScript } from "battlechain-lib/BCScript.sol";
+import { Contact } from "battlechain-lib/types/AgreementTypes.sol";
 
 contract Deploy is BCScript {
     function _protocolName() internal pure override returns (string memory) {

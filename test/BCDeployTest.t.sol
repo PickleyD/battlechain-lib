@@ -2,7 +2,7 @@
 pragma solidity ^0.8.24;
 
 import { Test } from "forge-std/Test.sol";
-import { BCDeploy } from "bc-lib/BCDeploy.sol";
+import { BCDeploy } from "src/BCDeploy.sol";
 import { MockBCDeployer, MockToken } from "test/mocks/MockBCInfra.sol";
 
 contract BCDeployHarness is BCDeploy {

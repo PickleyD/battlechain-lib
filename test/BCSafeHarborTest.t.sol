@@ -2,8 +2,8 @@
 pragma solidity ^0.8.24;
 
 import { Test } from "forge-std/Test.sol";
-import { BCSafeHarbor } from "bc-lib/BCSafeHarbor.sol";
-import { BCDeploy } from "bc-lib/BCDeploy.sol";
+import { BCSafeHarbor } from "src/BCSafeHarbor.sol";
+import { BCDeploy } from "src/BCDeploy.sol";
 import {
     AgreementDetails,
     Contact,
@@ -12,8 +12,8 @@ import {
     BountyTerms,
     ChildContractScope,
     IdentityRequirements
-} from "bc-lib/types/AgreementTypes.sol";
-import { BCConfig } from "bc-lib/BCConfig.sol";
+} from "src/types/AgreementTypes.sol";
+import { BCConfig } from "src/BCConfig.sol";
 import {
     MockAgreementFactory,
     MockAgreement,
