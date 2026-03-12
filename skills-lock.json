@@ -4,7 +4,17 @@
     "battlechain": {
       "source": "cyfrin/solskill",
       "sourceType": "github",
-      "computedHash": "4f69cc79239f4620c97dff55e0dfe22cfa49b91cb6113719f38e4dd4b2d38767"
+      "computedHash": "a042d53b93bdfafc2ac84e1d43e88119de0ee58de5f11e7cbfb8c221317a2534"
+    },
+    "battlechain-tutorial": {
+      "source": "cyfrin/solskill",
+      "sourceType": "github",
+      "computedHash": "38da9aefc6385650e9bc2bac642e569a72bfe8417c3a69846255776a24ad348b"
+    },
+    "solidity": {
+      "source": "cyfrin/solskill",
+      "sourceType": "github",
+      "computedHash": "6d140c667a4b32f8fc6ae62c0d1f637259a53bc8fc7d7dcaa058a692cbe5f299"
     }
   }
 }

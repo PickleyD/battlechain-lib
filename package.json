@@ -1,0 +1,34 @@
+{
+  "name": "@cyfrin/battlechain-lib",
+  "description": "Foundry library for deploying on BattleChain and adopting Safe Harbor agreements",
+  "version": "0.1.0",
+  "files": [
+    "/src/**/*.sol",
+    "!/src/**/mocks/**/*"
+  ],
+  "scripts": {
+    "build": "forge build",
+    "test": "forge test",
+    "lint": "forge fmt --check",
+    "lint:fix": "forge fmt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyfrin/battlechain-lib.git"
+  },
+  "keywords": [
+    "solidity",
+    "foundry",
+    "battlechain",
+    "safe-harbor",
+    "smart-contracts",
+    "zksync",
+    "deployment"
+  ],
+  "author": "Cyfrin <security@cyfrin.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cyfrin/battlechain-lib/issues"
+  },
+  "homepage": "https://docs.battlechain.com"
+}
