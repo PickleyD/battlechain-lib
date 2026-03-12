@@ -2,6 +2,8 @@
 // aderyn-ignore-next-line(push-zero-opcode,unspecific-solidity-pragma)
 pragma solidity ^0.8.24;
 
+import { CreateXChains } from "./CreateXChains.sol";
+
 /// @notice Address registry for BattleChain contracts, resolved by chain ID.
 /// All functions are internal view — inlined at compile time when chain ID is
 /// known, or resolved at runtime on forks.
@@ -23,11 +25,17 @@ library BCConfig {
     string internal constant DEVNET_CAIP2 = "eip155:624";
 
     // -------------------------------------------------------------------------
+    // CreateX — well-known address, same on all supported chains
+    // See CreateXChains.sol for the full list of supported chain IDs
+    // -------------------------------------------------------------------------
+
+    address internal constant WELL_KNOWN_CREATEX = 0xba5Ed099633D3B313e4D5F7bdc1305d3c28ba5Ed;
+
+    // -------------------------------------------------------------------------
     // URIs
     // -------------------------------------------------------------------------
 
-    string internal constant SAFE_HARBOR_V3_URI =
-        "https://bafkreiernns2f4nv2uzvwtzjc2jboyivsu2mixz33y3xo7cvtllsuao6jy.ipfs.w3s.link/";
+    string internal constant SAFE_HARBOR_V3_URI = "ipfs://bafkreiernns2f4nv2uzvwtzjc2jboyivsu2mixz33y3xo7cvtllsuao6jy";
     string internal constant BATTLECHAIN_SAFE_HARBOR_URI =
         "ipfs://bafkreifgln3ir67woluatpwn3b65gjkrbmoq6jgzzotm3anas3vvq4yp4m";
 
@@ -83,13 +91,15 @@ library BCConfig {
     }
 
     function isBattleChain() internal view returns (bool) {
-        return block.chainid == MAINNET_CHAIN_ID
-            || block.chainid == TESTNET_CHAIN_ID
-            || block.chainid == DEVNET_CHAIN_ID;
+        return
+            block.chainid == MAINNET_CHAIN_ID || block.chainid == TESTNET_CHAIN_ID || block.chainid == DEVNET_CHAIN_ID;
     }
+
+    error BCConfig__CreateXNotAvailable(uint256 chainId);
 
     function createX() internal view returns (address) {
         if (block.chainid == TESTNET_CHAIN_ID) return TESTNET_CREATEX;
-        revert BCConfig__UnsupportedChainId(block.chainid);
+        if (CreateXChains.isSupported(block.chainid)) return WELL_KNOWN_CREATEX;
+        revert BCConfig__CreateXNotAvailable(block.chainid);
     }
 }

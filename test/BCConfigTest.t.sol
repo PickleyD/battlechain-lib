@@ -121,9 +121,19 @@ contract BCConfigTest is Test {
         assertEq(BCConfig.createX(), 0xf1Ebfaa992854ECcB01Ac1F60e5b5279095cca7F);
     }
 
-    function test_createX_reverts_unsupportedChain() public {
+    function test_createX_wellKnown_ethereum() public {
         vm.chainId(1);
-        vm.expectRevert(abi.encodeWithSelector(BCConfig.BCConfig__UnsupportedChainId.selector, 1));
+        assertEq(BCConfig.createX(), BCConfig.WELL_KNOWN_CREATEX);
+    }
+
+    function test_createX_wellKnown_base() public {
+        vm.chainId(8453);
+        assertEq(BCConfig.createX(), BCConfig.WELL_KNOWN_CREATEX);
+    }
+
+    function test_createX_reverts_unsupportedChain() public {
+        vm.chainId(12_345_678);
+        vm.expectRevert(abi.encodeWithSelector(BCConfig.BCConfig__CreateXNotAvailable.selector, 12_345_678));
         caller.createX();
     }
 

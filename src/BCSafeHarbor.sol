@@ -106,7 +106,9 @@ abstract contract BCSafeHarbor is BCBase {
         });
     }
 
-    /// @notice Builds a full AgreementDetails struct with BattleChain defaults.
+    /// @notice Builds a full AgreementDetails struct with sensible defaults.
+    /// On BattleChain: uses BattleChain chain scope and BattleChain Safe Harbor URI.
+    /// On other chains: uses the current chain's CAIP-2 scope and generic Safe Harbor V3 URI.
     function defaultAgreementDetails(
         string memory protocolName,
         Contact[] memory contacts,
@@ -118,14 +120,23 @@ abstract contract BCSafeHarbor is BCBase {
         returns (AgreementDetails memory)
     {
         BcChain[] memory chains = new BcChain[](1);
-        chains[0] = buildBattleChainScope(contracts, recoveryAddr);
+        string memory uri;
+
+        if (BCConfig.isBattleChain()) {
+            chains[0] = buildBattleChainScope(contracts, recoveryAddr);
+            uri = BCConfig.BATTLECHAIN_SAFE_HARBOR_URI;
+        } else {
+            string memory caip2 = string.concat("eip155:", vm.toString(block.chainid));
+            chains[0] = buildChainScope(contracts, recoveryAddr, caip2);
+            uri = BCConfig.SAFE_HARBOR_V3_URI;
+        }
 
         return AgreementDetails({
             protocolName: protocolName,
             contactDetails: contacts,
             chains: chains,
             bountyTerms: defaultBountyTerms(),
-            agreementURI: BCConfig.BATTLECHAIN_SAFE_HARBOR_URI
+            agreementURI: uri
         });
     }
 
